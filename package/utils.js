@@ -1,41 +1,48 @@
-const JSONPATH_JOIN_CHAR = '.';
+const JSONPATH_JOIN_CHAR = ".";
 const _JSONPATH_JOIN_CHAR = JSONPATH_JOIN_CHAR;
 export { _JSONPATH_JOIN_CHAR as JSONPATH_JOIN_CHAR };
-export const lang = 'en_US';
+export const lang = "en_US";
 export const format = [
-  { name: 'date-time' },
-  { name: 'date' },
-  { name: 'email' },
-  { name: 'hostname' },
-  { name: 'ipv4' },
-  { name: 'ipv6' },
-  { name: 'uri' }
+  { name: "date-time" },
+  { name: "date" },
+  { name: "email" },
+  { name: "hostname" },
+  { name: "ipv4" },
+  { name: "ipv6" },
+  { name: "uri" },
 ];
-import _ from 'underscore';
-export const SCHEMA_TYPE = ['string', 'number', 'array', 'object', 'boolean', 'integer'];
+import _ from "underscore";
+export const SCHEMA_TYPE = [
+  "string",
+  "number",
+  "array",
+  "object",
+  "boolean",
+  "integer",
+];
 export const defaultSchema = {
   string: {
-    type: 'string'
+    type: "string",
   },
   number: {
-    type: 'number'
+    type: "number",
   },
   array: {
-    type: 'array',
+    type: "array",
     items: {
-      type: 'string'
-    }
+      type: "string",
+    },
   },
   object: {
-    type: 'object',
-    properties: {}
+    type: "object",
+    properties: {},
   },
   boolean: {
-    type: 'boolean'
+    type: "boolean",
   },
   integer: {
-    type: 'integer'
-  }
+    type: "integer",
+  },
 };
 
 // 防抖函数，减少高频触发的函数执行的频率
@@ -44,7 +51,7 @@ export const defaultSchema = {
 // this.func = debounce(this.func, 400);
 export function debounce(func, wait) {
   let timeout;
-  return function() {
+  return function () {
     clearTimeout(timeout);
     timeout = setTimeout(func, wait);
   };
@@ -87,7 +94,7 @@ export function getParentKeys(keys) {
 
 export function clearSomeFields(keys, data) {
   const newData = Object.assign({}, data);
-  keys.forEach(key => {
+  keys.forEach((key) => {
     delete newData[key];
   });
   return newData;
@@ -95,7 +102,7 @@ export function clearSomeFields(keys, data) {
 
 function getFieldstitle(data) {
   const requiredtitle = [];
-  Object.keys(data).map(title => {
+  Object.keys(data).map((title) => {
     requiredtitle.push(title);
   });
 
@@ -104,7 +111,7 @@ function getFieldstitle(data) {
 
 function handleSchemaRequired(schema, checked) {
   // console.log(schema)
-  if (schema.type === 'object') {
+  if (schema.type === "object") {
     let requiredtitle = getFieldstitle(schema.properties);
 
     // schema.required = checked ? [].concat(requiredtitle) : [];
@@ -115,7 +122,7 @@ function handleSchemaRequired(schema, checked) {
     }
 
     handleObject(schema.properties, checked);
-  } else if (schema.type === 'array') {
+  } else if (schema.type === "array") {
     handleSchemaRequired(schema.items, checked);
   } else {
     return schema;
@@ -124,7 +131,7 @@ function handleSchemaRequired(schema, checked) {
 
 function handleObject(properties, checked) {
   for (var key in properties) {
-    if (properties[key].type === 'array' || properties[key].type === 'object')
+    if (properties[key].type === "array" || properties[key].type === "object")
       handleSchemaRequired(properties[key], checked);
   }
 }
@@ -133,10 +140,10 @@ const _handleSchemaRequired = handleSchemaRequired;
 export { _handleSchemaRequired as handleSchemaRequired };
 
 function cloneObject(obj) {
-  if (typeof obj === 'object') {
+  if (typeof obj === "object") {
     if (Array.isArray(obj)) {
       var newArr = [];
-      obj.forEach(function(item, index) {
+      obj.forEach(function (item, index) {
         newArr[index] = cloneObject(item);
       });
       return newArr;

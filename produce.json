@@ -67,9 +67,7 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "textfgfgfgfgfgff"
-                        ]
+                        "required": ["textfgfgfgfgfgff"]
                       },
                       "children": {
                         "type": "array",
@@ -597,38 +595,23 @@
                                                 "items": {}
                                               }
                                             },
-                                            "required": [
-                                              "data",
-                                              "children"
-                                            ]
+                                            "required": ["data", "children"]
                                           }
                                         }
                                       },
-                                      "required": [
-                                        "data",
-                                        "children"
-                                      ]
+                                      "required": ["data", "children"]
                                     }
                                   }
                                 },
-                                "required": [
-                                  "data",
-                                  "children"
-                                ]
+                                "required": ["data", "children"]
                               }
                             }
                           },
-                          "required": [
-                            "data",
-                            "children"
-                          ]
+                          "required": ["data", "children"]
                         }
                       }
                     },
-                    "required": [
-                      "data",
-                      "children"
-                    ]
+                    "required": ["data", "children"]
                   }
                 }
               }
@@ -663,13 +646,8 @@
           "type": "number"
         }
       },
-      "required": [
-        "idfgfgfgfgdfgffgfgfgfggfgdflfgkl",
-        "create_date"
-      ]
+      "required": ["idfgfgfgfgdfgffgfgfgfggfgdflfgkl", "create_date"]
     }
   },
-  "required": [
-    "status"
-  ]
+  "required": ["status"]
 }
