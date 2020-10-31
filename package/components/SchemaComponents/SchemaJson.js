@@ -4,27 +4,21 @@ import {
   Menu,
   Row,
   Col,
-  Form,
   Select,
   Checkbox,
-  Button,
   Icon,
   Input,
-  Modal,
   message,
   Tooltip,
 } from "antd";
 import FieldInput from "./FieldInput";
 
-const FormItem = Form.Item;
 const Option = Select.Option;
-const { TextArea } = Input;
 import "./schemaJson.css";
 import _ from "underscore";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { JSONPATH_JOIN_CHAR, SCHEMA_TYPE } from "../../utils";
-const InputGroup = Input.Group;
 import LocaleProvider from "../LocalProvider/index";
 import MockSelect from "../MockSelect/index";
 

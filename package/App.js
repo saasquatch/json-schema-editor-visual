@@ -4,20 +4,15 @@ import {
   Row,
   Tooltip,
   Col,
-  Form,
   Select,
   Checkbox,
   Button,
   Icon,
   Modal,
   message,
-  Tabs,
-  AutoComplete,
 } from "antd";
-const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
-const TabPane = Tabs.TabPane;
 
 import "./index.css";
 import _ from "underscore";

@@ -1,25 +1,18 @@
 import React, { PureComponent } from "react";
 import {
-  Dropdown,
-  Menu,
   Input,
   InputNumber,
   Row,
   Col,
-  Form,
   Select,
   Checkbox,
-  Button,
   Icon,
-  Modal,
-  message,
   Tooltip,
   Switch,
 } from "antd";
 const { TextArea } = Input;
 import "./schemaJson.css";
 import _ from "underscore";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 const Option = Select.Option;
 import LocalProvider from "../LocalProvider/index.js";
@@ -133,7 +126,7 @@ class SchemaString extends PureComponent {
               <Tooltip title={LocalProvider("pattern")}>
                 <Icon type="question-circle-o" style={{ width: "10px" }} />
               </Tooltip>
-              &nbsp; :
+              &nbsp;&nbsp;{" "} :
             </span>
           </Col>
           <Col span={20}>
@@ -149,7 +142,7 @@ class SchemaString extends PureComponent {
         <Row className="other-row" type="flex" align="middle">
           <Col span={4} className="other-label">
             <span>
-              {LocalProvider("enum")}
+              {LocalProvider("enum")}{" "}
               <Checkbox
                 checked={this.state.checked}
                 onChange={(e) => this.onChangeCheckBox(e.target.checked, data)}
@@ -172,7 +165,7 @@ class SchemaString extends PureComponent {
         {this.state.checked && (
           <Row className="other-row" type="flex" align="middle">
             <Col span={4} className="other-label">
-              <span>{LocalProvider("enum_desc")}</span>
+              <span>{LocalProvider("enum_desc")} :</span>
             </Col>
             <Col span={20}>
               <TextArea
@@ -189,7 +182,7 @@ class SchemaString extends PureComponent {
         )}
         <Row className="other-row" type="flex" align="middle">
           <Col span={4} className="other-label">
-            <span>format :</span>
+            <span>Format :</span>
           </Col>
           <Col span={20}>
             <Select
@@ -412,7 +405,7 @@ class SchemaNumber extends PureComponent {
         <Row className="other-row" type="flex" align="middle">
           <Col span={4} className="other-label">
             <span>
-              {LocalProvider("enum")}
+              {LocalProvider("enum")}{" "}
               <Checkbox
                 checked={this.state.checked}
                 onChange={(e) => this.onChangeCheckBox(e.target.checked, data)}
@@ -436,7 +429,7 @@ class SchemaNumber extends PureComponent {
         {this.state.checked && (
           <Row className="other-row" type="flex" align="middle">
             <Col span={4} className="other-label">
-              <span>{LocalProvider("enum_desc")} ：</span>
+              <span>{LocalProvider("enum_desc")} :</span>
             </Col>
             <Col span={20}>
               <TextArea

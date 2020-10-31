@@ -41,19 +41,18 @@
 }
 
 .json-schema-react-editor .plus {
-  color: #2395f1;
+  color: #f5a841;
+  opacity: 1;
 }
 
 .json-schema-react-editor .close {
-  color: #ff561b;
+  color: #f5a841;
+  padding-top: 1px;
+  opacity: 1;
 }
 
 .json-schema-react-editor .array-type {
   margin-top: 8px;
-}
-
-.json-schema-react-editor .delete-item {
-  padding-right: 8px;
 }
 
 .json-schema-react-editor .object-style .name-item .ant-input-group-addon {
@@ -91,7 +90,7 @@
 
 .json-schema-react-editor .adv-set {
   padding-right: 8px;
-  color: #00a854;
+  color: #7c7c7c;
 }
 
 .json-schema-react-editor .type-select-style {
