@@ -3,8 +3,7 @@ const _JSONPATH_JOIN_CHAR = JSONPATH_JOIN_CHAR;
 export { _JSONPATH_JOIN_CHAR as JSONPATH_JOIN_CHAR };
 export const lang = "en_US";
 export const format = [
-  { name: "date-time" },
-  { name: "date" },
+  { name: "date-time" },,
   { name: "email" },
   { name: "hostname" },
   { name: "ipv4" },
