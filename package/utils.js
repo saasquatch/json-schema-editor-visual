@@ -44,10 +44,6 @@ export const defaultSchema = {
   },
 };
 
-// 防抖函数，减少高频触发的函数执行的频率
-// 请在 constructor 里使用:
-
-// this.func = debounce(this.func, 400);
 export function debounce(func, wait) {
   let timeout;
   return function () {
@@ -109,11 +105,10 @@ function getFieldstitle(data) {
 }
 
 function handleSchemaRequired(schema, checked) {
-  // console.log(schema)
+
   if (schema.type === "object") {
     let requiredtitle = getFieldstitle(schema.properties);
 
-    // schema.required = checked ? [].concat(requiredtitle) : [];
     if (checked) {
       schema.required = [].concat(requiredtitle);
     } else {

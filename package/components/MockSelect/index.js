@@ -20,7 +20,7 @@ export default class MockSelect extends React.Component {
   };
 
   render() {
-    // const children = [];
+  
     const { schema } = this.props;
     const children = this.mock.map((item) => (
       <Option key={item.mock}>{item.mock}</Option>

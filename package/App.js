@@ -40,7 +40,7 @@ class jsonSchema extends React.Component {
       itemKey: [],
       curItemCustomValue: null,
       checked: false,
-      editorModalName: "", // 弹窗名称desctiption | mock
+      editorModalName: "",
       mock: "",
     };
     this.Model = this.props.Model.schema;
@@ -48,7 +48,6 @@ class jsonSchema extends React.Component {
     this.jsonData = null;
   }
 
-  // json 导入弹窗
   showModal = () => {
     this.setState({
       visible: true,
@@ -114,13 +113,11 @@ class jsonSchema extends React.Component {
   }
 
   alterMsg = () => {
-    // return message.error(LocalProvider('valid_json'));
   };
 
-  // AceEditor 中的数据
   handleParams = (e) => {
     if (!e.text) return;
-    // 将数据map 到store中
+
     if (e.format !== true) {
       return this.alterMsg();
     }
@@ -130,7 +127,7 @@ class jsonSchema extends React.Component {
     });
   };
 
-  // 修改数据类型
+
   changeType = (key, value) => {
     this.Model.changeTypeAction({ key: [key], value });
   };
@@ -148,7 +145,7 @@ class jsonSchema extends React.Component {
     }
     this.jsonSchemaData = e.jsonData;
   };
-  // 增加子节点
+
   addChildField = (key) => {
     this.Model.addChildFieldAction({ key: [key] });
     this.setState({ show: true });
@@ -158,7 +155,7 @@ class jsonSchema extends React.Component {
     this.setState({ show: !this.state.show });
   };
 
-  // 修改备注信息
+
   changeValue = (key, value) => {
     if (key[0] === "mock") {
       value = value ? { mock: value } : "";
@@ -166,7 +163,6 @@ class jsonSchema extends React.Component {
     this.Model.changeValueAction({ key, value });
   };
 
-  // 备注/mock弹窗 点击ok 时
   handleEditOk = (name) => {
     this.setState({
       editVisible: false,
@@ -183,13 +179,7 @@ class jsonSchema extends React.Component {
       editVisible: false,
     });
   };
-  /*
-    展示弹窗modal
-    prefix: 节点前缀信息
-    name: 弹窗的名称 ['description', 'mock']
-    value: 输入值
-    type: 如果当前字段是object || array showEdit 不可用
-  */
+
   showEdit = (prefix, name, value, type) => {
     if (type === "object" || type === "array") {
       return;
@@ -205,14 +195,12 @@ class jsonSchema extends React.Component {
     });
   };
 
-  // 修改备注/mock参数信息
   changeDesc = (e, name) => {
     this.setState({
       [name]: e,
     });
   };
 
-  // 高级设置
   handleAdvOk = () => {
     if (this.state.itemKey.length === 0) {
       this.Model.changeEditorSchemaAction({
@@ -237,11 +225,10 @@ class jsonSchema extends React.Component {
     this.setState({
       advVisible: true,
       itemKey: key,
-      curItemCustomValue: value, // 当前节点的数据信息
+      curItemCustomValue: value, 
     });
   };
 
-  //  修改弹窗中的json-schema 值
   changeCustomValue = (newValue) => {
     this.setState({
       curItemCustomValue: newValue,

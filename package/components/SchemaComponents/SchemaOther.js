@@ -415,7 +415,6 @@ class SchemaNumber extends PureComponent {
           </Col>
           <Col span={20}>
             <TextArea
-              // value={data.enum && data.enum.length && data.enum.join('\n')}
               value={this.state.enum}
               disabled={!this.state.checked}
               placeholder={LocalProvider("enum_msg")}

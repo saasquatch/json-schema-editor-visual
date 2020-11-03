@@ -86,10 +86,9 @@ export default {
     if (parentData.type === value) {
       return;
     }
-    // let newParentData = utils.defaultSchema[value];
+ 
     let newParentDataItem = utils.defaultSchema[value];
 
-    // 将备注过滤出来
     let parentDataItem = parentData.description
       ? { description: parentData.description }
       : {};
@@ -123,7 +122,7 @@ export default {
   },
 
   requireAllAction: function (state, action, oldState) {
-    // let oldData = oldState.data;
+
     let data = utils.cloneObject(action.value);
     utils.handleSchemaRequired(data, action.required);
 
@@ -174,7 +173,7 @@ export default {
       }
     }
     utils.setData(state.data, keys, newPropertiesData);
-    // add required
+ 
     parentKeys.push("required");
     utils.setData(state.data, parentKeys, requiredData);
   },
@@ -189,7 +188,6 @@ export default {
     newPropertiesData[ranName] = utils.defaultSchema.string;
     utils.setData(state.data, keys, newPropertiesData);
 
-    // add required
     let parentKeys = utils.getParentKeys(keys);
     let parentData = utils.getData(oldData, parentKeys);
     let requiredData = [].concat(parentData.required || []);

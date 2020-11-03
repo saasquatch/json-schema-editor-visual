@@ -69,14 +69,12 @@ class SchemaArray extends PureComponent {
     return [].concat(this.props.prefix, "items");
   }
 
-  // 修改数据类型
   handleChangeType = (value) => {
     let prefix = this.getPrefix();
     let key = [].concat(prefix, "type");
     this.Model.changeTypeAction({ key, value });
   };
 
-  // 修改备注信息
   handleChangeDesc = (e) => {
     let prefix = this.getPrefix();
     let key = [].concat(prefix, `description`);
@@ -84,7 +82,6 @@ class SchemaArray extends PureComponent {
     this.Model.changeValueAction({ key, value });
   };
 
-  // 修改mock信息
   handleChangeMock = (e) => {
     let prefix = this.getPrefix();
     let key = [].concat(prefix, `mock`);
@@ -99,7 +96,6 @@ class SchemaArray extends PureComponent {
     this.Model.changeValueAction({ key, value });
   };
 
-  // 增加子节点
   handleAddChildField = () => {
     let prefix = this.getPrefix();
     let keyArr = [].concat(prefix, "properties");
@@ -109,7 +105,6 @@ class SchemaArray extends PureComponent {
 
   handleClickIcon = () => {
     let prefix = this.getPrefix();
-    // 数据存储在 properties.name.properties下
     let keyArr = [].concat(prefix, "properties");
     this.Model.setOpenValueAction({ key: keyArr });
   };
@@ -270,7 +265,6 @@ class SchemaItem extends PureComponent {
   constructor(props, context) {
     super(props);
     this._tagPaddingLeftStyle = {};
-    // this.num = 0
     this.Model = context.Model.schema;
   }
 
@@ -286,7 +280,6 @@ class SchemaItem extends PureComponent {
     return [].concat(this.props.prefix, this.props.name);
   }
 
-  // 修改节点字段名
   handleChangeName = (e) => {
     const { data, prefix, name } = this.props;
     let value = e.target.value;
@@ -298,7 +291,6 @@ class SchemaItem extends PureComponent {
     this.Model.changeNameAction({ value, prefix, name });
   };
 
-  // 修改备注信息
   handleChangeDesc = (e) => {
     let prefix = this.getPrefix();
     let key = [].concat(prefix, "description");
@@ -306,7 +298,6 @@ class SchemaItem extends PureComponent {
     this.Model.changeValueAction({ key, value });
   };
 
-  // 修改mock 信息
   handleChangeMock = (e) => {
     let prefix = this.getPrefix();
     let key = [].concat(prefix, `mock`);
@@ -321,25 +312,19 @@ class SchemaItem extends PureComponent {
     this.Model.changeValueAction({ key, value });
   };
 
-  // 修改数据类型
   handleChangeType = (e) => {
     let prefix = this.getPrefix();
     let key = [].concat(prefix, "type");
     this.Model.changeTypeAction({ key, value: e });
   };
 
-  // 删除节点
   handleDeleteItem = () => {
     const { prefix, name } = this.props;
     let nameArray = this.getPrefix();
     this.Model.deleteItemAction({ key: nameArray });
     this.Model.enableRequireAction({ prefix, name, required: false });
   };
-  /*
-  展示备注编辑弹窗
-  editorName: 弹窗名称 ['description', 'mock']
-  type: 如果当前字段是object || array showEdit 不可用
-  */
+
   handleShowEdit = (editorName, type) => {
     const { data, name, showEdit } = this.props;
 
@@ -351,31 +336,25 @@ class SchemaItem extends PureComponent {
     );
   };
 
-  // 展示高级设置弹窗
   handleShowAdv = () => {
     const { data, name, showAdv } = this.props;
     showAdv(this.getPrefix(), data.properties[name]);
   };
 
-  //  增加子节点
   handleAddField = () => {
     const { prefix, name } = this.props;
     this.Model.addFieldAction({ prefix, name });
   };
 
-  // 控制三角形按钮
   handleClickIcon = () => {
     let prefix = this.getPrefix();
-    // 数据存储在 properties.xxx.properties 下
     let keyArr = [].concat(prefix, "properties");
     this.Model.setOpenValueAction({ key: keyArr });
   };
 
-  // 修改是否必须
   handleEnableRequire = (e) => {
     const { prefix, name } = this.props;
     let required = e.target.checked;
-    // this.enableRequire(this.props.prefix, this.props.name, e.target.checked);
     this.Model.enableRequireAction({ prefix, name, required });
   };
 
@@ -449,15 +428,6 @@ class SchemaItem extends PureComponent {
 
           {this.context.isMock && (
             <Col span={3} className="col-item col-item-mock">
-              {/* <Input
-                addonAfter={
-                  <Icon type="edit" onClick={() => this.handleShowEdit('mock', value.type)} />
-                }
-                placeholder={LocaleProvider('mock')}
-                value={value.mock ? value.mock.mock : ''}
-                onChange={this.handleChangeMock}
-                disabled={value.type === 'object' || value.type === 'array'}
-              /> */}
               <MockSelect
                 schema={value}
                 showEdit={() => this.handleShowEdit("mock", value.type)}
