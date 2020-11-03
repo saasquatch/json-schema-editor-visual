@@ -305,62 +305,6 @@ class SchemaNumber extends PureComponent {
         <Row className="other-row" type="flex" align="middle">
           <Col span={12}>
             <Row type="flex" align="middle">
-              <Col span={13} className="other-label">
-                <span>
-                  exclusiveMinimum&nbsp;
-                  <Tooltip title={LocalProvider("exclusiveMinimum")}>
-                    <Icon type="question-circle-o" style={{ width: "10px" }} />
-                  </Tooltip>
-                  &nbsp; :
-                </span>
-              </Col>
-              <Col span={11}>
-                <Switch
-                  checked={data.exclusiveMinimum}
-                  placeholder="exclusiveMinimum"
-                  onChange={(e) =>
-                    changeOtherValue(
-                      e,
-                      "exclusiveMinimum",
-                      data,
-                      this.context.changeCustomValue
-                    )
-                  }
-                />
-              </Col>
-            </Row>
-          </Col>
-          <Col span={12}>
-            <Row type="flex" align="middle">
-              <Col span={13} className="other-label">
-                <span>
-                  exclusiveMaximum&nbsp;
-                  <Tooltip title={LocalProvider("exclusiveMaximum")}>
-                    <Icon type="question-circle-o" style={{ width: "10px" }} />
-                  </Tooltip>
-                  &nbsp; :
-                </span>
-              </Col>
-              <Col span={11}>
-                <Switch
-                  checked={data.exclusiveMaximum}
-                  placeholder="exclusiveMaximum"
-                  onChange={(e) =>
-                    changeOtherValue(
-                      e,
-                      "exclusiveMaximum",
-                      data,
-                      this.context.changeCustomValue
-                    )
-                  }
-                />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-        <Row className="other-row" type="flex" align="middle">
-          <Col span={12}>
-            <Row type="flex" align="middle">
               <Col span={8} className="other-label">
                 {LocalProvider("minimum")}：
               </Col>
