@@ -223,7 +223,7 @@ class SchemaArray extends PureComponent {
               span={this.context.isMock ? 2 : 3}
               className="col-item col-item-setting"
             >
-              {items.type != "object" && (
+              {items.type != "object"  && items.type != "boolean" && (
                 <span className="adv-set" onClick={this.handleShowAdv}>
                   <Tooltip
                     placement="top"
@@ -474,7 +474,7 @@ class SchemaItem extends PureComponent {
             span={this.context.isMock ? 2 : 3}
             className="col-item col-item-setting"
           >
-            {value.type != "object" && (
+            {value.type != "object" && value.type != "boolean" && (
               <span className="adv-set" onClick={this.handleShowAdv}>
                 <Tooltip placement="top" title={LocaleProvider("adv_setting")}>
                   <Icon type="setting" />

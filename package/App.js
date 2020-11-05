@@ -436,11 +436,10 @@ class jsonSchema extends React.Component {
                 />
               </Col>
               <Col span={2} className="col-item col-item-setting">
-                {schema.type != "object" && (
+                {schema.type != "object" && schema.type != "boolean" && (
                   <span
                     className="adv-set"
                     onClick={() => {
-                      console.log("SCHEMA", this.props.schema);
                       this.showAdv([], this.props.schema);
                     }}
                   >
