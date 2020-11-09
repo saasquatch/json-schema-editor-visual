@@ -18,7 +18,7 @@ import LocalProvider from "../LocalProvider/index.js";
 
 const changeOtherValue = (value, name, data, change) => {
   data[name] = value;
-  if (value === null) {
+  if (!value) {
     delete data[name];
   } else {
     data[name] = value;
@@ -44,7 +44,7 @@ class SchemaString extends PureComponent {
   }
 
   changeOtherValue = (value, name, data) => {
-    if (value === null) {
+    if (!value) {
       delete data[name];
     } else {
       data[name] = value;
@@ -126,7 +126,7 @@ class SchemaString extends PureComponent {
             <TextArea
               value={data.enum && data.enum.length && data.enum.join("\n")}
               placeholder={LocalProvider("enum_msg")}
-              autoSize={{ minRows: 2, maxRows: 6 }}
+              autoSize={{ minRows: 10, maxRows: 15 }}
               onChange={(e) => {
                 this.changeEnumOtherValue(e.target.value, data);
               }}
@@ -272,7 +272,7 @@ class SchemaNumber extends PureComponent {
             <TextArea
               value={this.state.enum}
               placeholder={LocalProvider("enum_msg")}
-              autoSize={{ minRows: 2, maxRows: 6 }}
+              autoSize={{ minRows: 10, maxRows: 15 }}
               onChange={(e) => {
                 this.changeEnumOtherValue(e.target.value, data);
               }}
@@ -296,7 +296,7 @@ const SchemaArray = (props, context) => {
       <Row className="other-row" type="flex" align="middle">
         <Col span={6} className="other-label">
           <span>
-            uniqueItems&nbsp;
+            Unique items&nbsp;
             <Tooltip title={LocalProvider("unique_items")}>
               <Icon type="question-circle-o" style={{ width: "10px" }} />
             </Tooltip>
