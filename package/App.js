@@ -331,7 +331,7 @@ class jsonSchema extends React.Component {
 
         <Row>
           <Col
-            span={this.props.showEditor ? 16 : 24}
+            span={24}
             className="wrapper object-style"
           >
             <Row type="flex" align="middle">
@@ -487,7 +487,6 @@ jsonSchema.childContextTypes = {
 jsonSchema.propTypes = {
   data: PropTypes.string,
   onChange: PropTypes.func,
-  showEditor: PropTypes.bool,
   isMock: PropTypes.bool,
   Model: PropTypes.object,
 };

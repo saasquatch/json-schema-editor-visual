@@ -33,7 +33,6 @@ export default (config = {}) => {
   Component.propTypes = {
     data: PropTypes.string,
     onChange: PropTypes.func,
-    showEditor: PropTypes.bool,
   };
   return Component;
 };
