@@ -1,39 +1,38 @@
-# json-schema-editor-visual
-A json-schema editor of high efficient and easy-to-use, base on React.
+# SaaSquatch Json Schema Editor
 
-![avatar](json-schema-editor-visual.jpg)
+## Installing via NPM
 
-## Usage
 ```
-npm install json-schema-editor-visual
+npm install @saasquatch/json-schema-editor-visual
 ```
+
+## Getting Started
 
 ```js
-const option = {}
-import 'antd/dist/antd.css'
-require('json-schema-editor-visual/dist/main.css')
-const schemaEditor = require("json-schema-editor-visual/dist/main.js");
-const SchemaEditor = schemaEditor(option)
+import "antd/dist/antd.css";
+import "@saasquatch/json-schema-editor-visual/dist/index.css";
+import createEditor from "@saasquatch/json-schema-editor-visual";
 
-render(
-    <SchemaEditor />,
-  document.getElementById('root')
-)
+const SchemaEditor = createEditor();
+
+const SchemaEditorView = () => {
+  return (
+    <>
+      <SchemaEditor />
+    </>
+  );
+};
 ```
 
-## Option Object
+The schema editor is designed to be compatible with JSON Schema version draft-06. Visit the [JSON Schema Website](https://json-schema.org/) to learn more.
 
-| name | desc | default |
-| ---- | ----------- | --------- |
-| `lg` | language, support `en_US` or `zh_CN` | en_US 
+## Schema Editor Props
 
-## SchemaEditor Props
+| name       | type     | default | description                                                    |
+| ---------- | -------- | ------- | -------------------------------------------------------------- |
+| `data`     | string   | null    | the data of editor                                             |
+| `onChange` | function | null    | the function triggered when changes to the editor's data occur |
 
-| name | type | default | desc
-| ---- | ----------- | --------- | --------- |
-| `data` | string | null | the data of editor
-| `onChange`| function | null | 
-| `showEditor` | boolean | false | 
+## Acknowledgements
 
-## Links
-https://github.com/zyqwst/json-schema-editor-vue
+Forked from [YMFE](https://github.com/YMFE/json-schema-editor-visual).

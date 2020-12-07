@@ -41,3 +41,4 @@ yarn.lock
 dev
 .DS_Store
 package-lock.json
+dist/
