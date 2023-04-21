@@ -10,5 +10,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Updated license copyright to be in line with SaaSquatch open-source policy.
 
-[unreleased]: https://github.com/jsonata-ui/json-schema-editor-visual/compare/json-schema-editor-visual@1.0.2...HEAD
+[unreleased]: https://github.com/saasquatch/json-schema-editor-visual/compare/json-schema-editor-visual@1.0.2...HEAD
 [1.0.2]: https://github.com/saasquatch/json-schema-editor-visual/releases/tag/v1.0.2
