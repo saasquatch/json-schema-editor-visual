@@ -112,8 +112,7 @@ class jsonSchema extends React.Component {
     };
   }
 
-  alterMsg = () => {
-  };
+  alterMsg = () => {};
 
   handleParams = (e) => {
     if (!e.text) return;
@@ -126,7 +125,6 @@ class jsonSchema extends React.Component {
       value: e.jsonData,
     });
   };
-
 
   changeType = (key, value) => {
     this.Model.changeTypeAction({ key: [key], value });
@@ -154,7 +152,6 @@ class jsonSchema extends React.Component {
   clickIcon = () => {
     this.setState({ show: !this.state.show });
   };
-
 
   changeValue = (key, value) => {
     if (key[0] === "mock") {
@@ -225,7 +222,7 @@ class jsonSchema extends React.Component {
     this.setState({
       advVisible: true,
       itemKey: key,
-      curItemCustomValue: value, 
+      curItemCustomValue: value,
     });
   };
 
@@ -325,15 +322,13 @@ class jsonSchema extends React.Component {
           >
             <CustomItem
               data={JSON.stringify(this.state.curItemCustomValue, null, 2)}
+              popupContainer={this.props.popupContainer}
             />
           </Modal>
         )}
 
         <Row>
-          <Col
-            span={24}
-            className="wrapper object-style"
-          >
+          <Col span={24} className="wrapper object-style">
             <Row type="flex" align="middle">
               <Col span={8} className="col-item name-item col-item-name">
                 <Row type="flex" justify="space-around" align="middle">
@@ -372,6 +367,9 @@ class jsonSchema extends React.Component {
                   className="type-select-style"
                   onChange={(e) => this.changeType(`type`, e)}
                   value={schema.type || "object"}
+                  getPopupContainer={(triggerNode) =>
+                    this.props.popupContainer || triggerNode.parentElement
+                  }
                 >
                   {utils.SCHEMA_TYPE.map((item, index) => {
                     return (
@@ -468,6 +466,7 @@ class jsonSchema extends React.Component {
                 data={this.props.schema}
                 showEdit={this.showEdit}
                 showAdv={this.showAdv}
+                popupContainer={this.props.popupContainer}
               />
             )}
           </Col>

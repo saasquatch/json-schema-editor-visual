@@ -168,6 +168,9 @@ class SchemaArray extends PureComponent {
                 className="type-select-style"
                 onChange={this.handleChangeType}
                 value={items.type}
+                getPopupContainer={(triggerNode) =>
+                  this.props.popupContainer || triggerNode.parentElement
+                }
               >
                 {SCHEMA_TYPE.map((item, index) => {
                   return (
@@ -223,7 +226,7 @@ class SchemaArray extends PureComponent {
               span={this.context.isMock ? 2 : 3}
               className="col-item col-item-setting"
             >
-              {items.type != "object"  && items.type != "boolean" && (
+              {items.type != "object" && items.type != "boolean" && (
                 <span className="adv-set" onClick={this.handleShowAdv}>
                   <Tooltip
                     placement="top"
@@ -415,6 +418,9 @@ class SchemaItem extends PureComponent {
               className="type-select-style"
               onChange={this.handleChangeType}
               value={value.type}
+              getPopupContainer={(triggerNode) =>
+                this.props.popupContainer || triggerNode.parentElement
+              }
             >
               {SCHEMA_TYPE.map((item, index) => {
                 return (

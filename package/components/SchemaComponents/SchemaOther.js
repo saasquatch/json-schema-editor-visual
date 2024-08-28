@@ -154,6 +154,9 @@ class SchemaString extends PureComponent {
                     .indexOf(input.toLowerCase()) >= 0
                 );
               }}
+              getPopupContainer={(triggerNode) =>
+                this.props.popupContainer || triggerNode.parentElement
+              }
             >
               {this.format.map((item) => {
                 return (
@@ -213,7 +216,6 @@ class SchemaNumber extends PureComponent {
     data.enum = arr;
     this.context.changeCustomValue(data);
   };
-
 
   render() {
     const { data } = this.props;
