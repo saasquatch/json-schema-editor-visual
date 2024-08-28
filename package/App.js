@@ -273,6 +273,9 @@ class jsonSchema extends React.Component {
               {LocalProvider("ok")}
             </Button>,
           ]}
+          getContainer={(triggerNode) =>
+            this.props.popupContainer || triggerNode.parentElement
+          }
         ></Modal>
 
         <Modal
@@ -281,7 +284,12 @@ class jsonSchema extends React.Component {
               {LocalProvider(editorModalName)}
               &nbsp;
               {editorModalName === "mock" && (
-                <Tooltip title={LocalProvider("mockLink")}>
+                <Tooltip
+                  title={LocalProvider("mockLink")}
+                  getPopupContainer={(triggerNode) =>
+                    this.props.popupContainer || triggerNode.parentElement
+                  }
+                >
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
@@ -299,6 +307,9 @@ class jsonSchema extends React.Component {
           onCancel={this.handleEditCancel}
           okText={LocalProvider("ok")}
           cancelText={LocalProvider("cancel")}
+          getContainer={(triggerNode) =>
+            this.props.popupContainer || triggerNode.parentElement
+          }
         >
           <TextArea
             value={this.state[editorModalName]}
@@ -319,6 +330,9 @@ class jsonSchema extends React.Component {
             width={780}
             cancelText={LocalProvider("cancel")}
             className="json-schema-react-editor-adv-modal"
+            getContainer={(triggerNode) =>
+              this.props.popupContainer || triggerNode.parentElement
+            }
           >
             <CustomItem
               data={JSON.stringify(this.state.curItemCustomValue, null, 2)}
@@ -346,7 +360,14 @@ class jsonSchema extends React.Component {
                   <Col span={22}>
                     <Input
                       addonAfter={
-                        <Tooltip placement="top" title={"checked_all"}>
+                        <Tooltip
+                          placement="top"
+                          title={"checked_all"}
+                          getPopupContainer={(triggerNode) =>
+                            this.props.popupContainer ||
+                            triggerNode.parentElement
+                          }
+                        >
                           <Checkbox
                             checked={checked}
                             disabled={disabled}
@@ -444,6 +465,9 @@ class jsonSchema extends React.Component {
                     <Tooltip
                       placement="top"
                       title={LocalProvider("adv_setting")}
+                      getPopupContainer={(triggerNode) =>
+                        this.props.popupContainer || triggerNode.parentElement
+                      }
                     >
                       <Icon type="setting" />
                     </Tooltip>
@@ -454,6 +478,9 @@ class jsonSchema extends React.Component {
                     <Tooltip
                       placement="top"
                       title={LocalProvider("add_child_node")}
+                      getPopupContainer={(triggerNode) =>
+                        this.props.popupContainer || triggerNode.parentElement
+                      }
                     >
                       <Icon type="plus" className="plus" />
                     </Tooltip>
