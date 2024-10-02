@@ -112,8 +112,7 @@ class jsonSchema extends React.Component {
     };
   }
 
-  alterMsg = () => {
-  };
+  alterMsg = () => {};
 
   handleParams = (e) => {
     if (!e.text) return;
@@ -126,7 +125,6 @@ class jsonSchema extends React.Component {
       value: e.jsonData,
     });
   };
-
 
   changeType = (key, value) => {
     this.Model.changeTypeAction({ key: [key], value });
@@ -154,7 +152,6 @@ class jsonSchema extends React.Component {
   clickIcon = () => {
     this.setState({ show: !this.state.show });
   };
-
 
   changeValue = (key, value) => {
     if (key[0] === "mock") {
@@ -225,7 +222,7 @@ class jsonSchema extends React.Component {
     this.setState({
       advVisible: true,
       itemKey: key,
-      curItemCustomValue: value, 
+      curItemCustomValue: value,
     });
   };
 
@@ -276,6 +273,9 @@ class jsonSchema extends React.Component {
               {LocalProvider("ok")}
             </Button>,
           ]}
+          getContainer={(triggerNode) =>
+            this.props.popupContainer || triggerNode.parentElement
+          }
         ></Modal>
 
         <Modal
@@ -284,7 +284,12 @@ class jsonSchema extends React.Component {
               {LocalProvider(editorModalName)}
               &nbsp;
               {editorModalName === "mock" && (
-                <Tooltip title={LocalProvider("mockLink")}>
+                <Tooltip
+                  title={LocalProvider("mockLink")}
+                  getPopupContainer={(triggerNode) =>
+                    this.props.popupContainer || triggerNode.parentElement
+                  }
+                >
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
@@ -302,6 +307,9 @@ class jsonSchema extends React.Component {
           onCancel={this.handleEditCancel}
           okText={LocalProvider("ok")}
           cancelText={LocalProvider("cancel")}
+          getContainer={(triggerNode) =>
+            this.props.popupContainer || triggerNode.parentElement
+          }
         >
           <TextArea
             value={this.state[editorModalName]}
@@ -322,18 +330,19 @@ class jsonSchema extends React.Component {
             width={780}
             cancelText={LocalProvider("cancel")}
             className="json-schema-react-editor-adv-modal"
+            getContainer={(triggerNode) =>
+              this.props.popupContainer || triggerNode.parentElement
+            }
           >
             <CustomItem
               data={JSON.stringify(this.state.curItemCustomValue, null, 2)}
+              popupContainer={this.props.popupContainer}
             />
           </Modal>
         )}
 
         <Row>
-          <Col
-            span={24}
-            className="wrapper object-style"
-          >
+          <Col span={24} className="wrapper object-style">
             <Row type="flex" align="middle">
               <Col span={8} className="col-item name-item col-item-name">
                 <Row type="flex" justify="space-around" align="middle">
@@ -351,7 +360,14 @@ class jsonSchema extends React.Component {
                   <Col span={22}>
                     <Input
                       addonAfter={
-                        <Tooltip placement="top" title={"checked_all"}>
+                        <Tooltip
+                          placement="top"
+                          title={"checked_all"}
+                          getPopupContainer={(triggerNode) =>
+                            this.props.popupContainer ||
+                            triggerNode.parentElement
+                          }
+                        >
                           <Checkbox
                             checked={checked}
                             disabled={disabled}
@@ -372,6 +388,9 @@ class jsonSchema extends React.Component {
                   className="type-select-style"
                   onChange={(e) => this.changeType(`type`, e)}
                   value={schema.type || "object"}
+                  getPopupContainer={(triggerNode) =>
+                    this.props.popupContainer || triggerNode.parentElement
+                  }
                 >
                   {utils.SCHEMA_TYPE.map((item, index) => {
                     return (
@@ -446,6 +465,9 @@ class jsonSchema extends React.Component {
                     <Tooltip
                       placement="top"
                       title={LocalProvider("adv_setting")}
+                      getPopupContainer={(triggerNode) =>
+                        this.props.popupContainer || triggerNode.parentElement
+                      }
                     >
                       <Icon type="setting" />
                     </Tooltip>
@@ -456,6 +478,9 @@ class jsonSchema extends React.Component {
                     <Tooltip
                       placement="top"
                       title={LocalProvider("add_child_node")}
+                      getPopupContainer={(triggerNode) =>
+                        this.props.popupContainer || triggerNode.parentElement
+                      }
                     >
                       <Icon type="plus" className="plus" />
                     </Tooltip>
@@ -468,6 +493,7 @@ class jsonSchema extends React.Component {
                 data={this.props.schema}
                 showEdit={this.showEdit}
                 showAdv={this.showAdv}
+                popupContainer={this.props.popupContainer}
               />
             )}
           </Col>

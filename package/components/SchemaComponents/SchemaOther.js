@@ -102,7 +102,12 @@ class SchemaString extends PureComponent {
           <Col span={4} className="other-label">
             <span>
               Pattern&nbsp;
-              <Tooltip title={LocalProvider("pattern")}>
+              <Tooltip
+                title={LocalProvider("pattern")}
+                getPopupContainer={(triggerNode) =>
+                  this.props.popupContainer || triggerNode.parentElement
+                }
+              >
                 <Icon type="question-circle-o" style={{ width: "10px" }} />
               </Tooltip>
               &nbsp;&nbsp; :
@@ -154,6 +159,9 @@ class SchemaString extends PureComponent {
                     .indexOf(input.toLowerCase()) >= 0
                 );
               }}
+              getPopupContainer={(triggerNode) =>
+                this.props.popupContainer || triggerNode.parentElement
+              }
             >
               {this.format.map((item) => {
                 return (
@@ -213,7 +221,6 @@ class SchemaNumber extends PureComponent {
     data.enum = arr;
     this.context.changeCustomValue(data);
   };
-
 
   render() {
     const { data } = this.props;
@@ -297,7 +304,12 @@ const SchemaArray = (props, context) => {
         <Col span={6} className="other-label">
           <span>
             Unique items&nbsp;
-            <Tooltip title={LocalProvider("unique_items")}>
+            <Tooltip
+              title={LocalProvider("unique_items")}
+              getPopupContainer={(triggerNode) =>
+                this.props.popupContainer || triggerNode.parentElement
+              }
+            >
               <Icon type="question-circle-o" style={{ width: "10px" }} />
             </Tooltip>
             &nbsp; :

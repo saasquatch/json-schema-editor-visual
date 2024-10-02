@@ -168,6 +168,9 @@ class SchemaArray extends PureComponent {
                 className="type-select-style"
                 onChange={this.handleChangeType}
                 value={items.type}
+                getPopupContainer={(triggerNode) =>
+                  this.props.popupContainer || triggerNode.parentElement
+                }
               >
                 {SCHEMA_TYPE.map((item, index) => {
                   return (
@@ -223,11 +226,14 @@ class SchemaArray extends PureComponent {
               span={this.context.isMock ? 2 : 3}
               className="col-item col-item-setting"
             >
-              {items.type != "object"  && items.type != "boolean" && (
+              {items.type != "object" && items.type != "boolean" && (
                 <span className="adv-set" onClick={this.handleShowAdv}>
                   <Tooltip
                     placement="top"
                     title={LocaleProvider("adv_setting")}
+                    getPopupContainer={(triggerNode) =>
+                      this.props.popupContainer || triggerNode.parentElement
+                    }
                   >
                     <Icon type="setting" />
                   </Tooltip>
@@ -239,6 +245,9 @@ class SchemaArray extends PureComponent {
                   <Tooltip
                     placement="top"
                     title={LocaleProvider("add_child_node")}
+                    getPopupContainer={(triggerNode) =>
+                      this.props.popupContainer || triggerNode.parentElement
+                    }
                   >
                     <Icon type="plus" className="plus" />
                   </Tooltip>
@@ -392,7 +401,13 @@ class SchemaItem extends PureComponent {
               <Col span={22}>
                 <FieldInput
                   addonAfter={
-                    <Tooltip placement="top" title={LocaleProvider("required")}>
+                    <Tooltip
+                      placement="top"
+                      title={LocaleProvider("required")}
+                      getPopupContainer={(triggerNode) =>
+                        this.props.popupContainer || triggerNode.parentElement
+                      }
+                    >
                       <Checkbox
                         onChange={this.handleEnableRequire}
                         checked={
@@ -415,6 +430,9 @@ class SchemaItem extends PureComponent {
               className="type-select-style"
               onChange={this.handleChangeType}
               value={value.type}
+              getPopupContainer={(triggerNode) =>
+                this.props.popupContainer || triggerNode.parentElement
+              }
             >
               {SCHEMA_TYPE.map((item, index) => {
                 return (
@@ -476,7 +494,13 @@ class SchemaItem extends PureComponent {
           >
             {value.type != "object" && value.type != "boolean" && (
               <span className="adv-set" onClick={this.handleShowAdv}>
-                <Tooltip placement="top" title={LocaleProvider("adv_setting")}>
+                <Tooltip
+                  placement="top"
+                  title={LocaleProvider("adv_setting")}
+                  getPopupContainer={(triggerNode) =>
+                    this.props.popupContainer || triggerNode.parentElement
+                  }
+                >
                   <Icon type="setting" />
                 </Tooltip>
               </span>
@@ -491,6 +515,9 @@ class SchemaItem extends PureComponent {
                 <Tooltip
                   placement="top"
                   title={LocaleProvider("add_sibling_node")}
+                  getPopupContainer={(triggerNode) =>
+                    this.props.popupContainer || triggerNode.parentElement
+                  }
                 >
                   <Icon type="plus" className="plus" />
                 </Tooltip>
@@ -576,7 +603,13 @@ const DropPlus = (props, context) => {
   );
 
   return (
-    <Tooltip placement="top" title={LocaleProvider("add_node")}>
+    <Tooltip
+      placement="top"
+      title={LocaleProvider("add_node")}
+      getPopupContainer={(triggerNode) =>
+        this.props.popupContainer || triggerNode.parentElement
+      }
+    >
       <Dropdown overlay={menu}>
         <Icon type="plus" className="plus" />
       </Dropdown>
