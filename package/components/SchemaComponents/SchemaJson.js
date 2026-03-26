@@ -341,7 +341,7 @@ class SchemaItem extends PureComponent {
       this.getPrefix(),
       editorName,
       data.properties[name][editorName],
-      type
+      type,
     );
   };
 
@@ -606,9 +606,7 @@ const DropPlus = (props, context) => {
     <Tooltip
       placement="top"
       title={LocaleProvider("add_node")}
-      getPopupContainer={(triggerNode) =>
-        this.props.popupContainer || triggerNode.parentElement
-      }
+      getPopupContainer={(triggerNode) => triggerNode.parentElement}
     >
       <Dropdown overlay={menu}>
         <Icon type="plus" className="plus" />
