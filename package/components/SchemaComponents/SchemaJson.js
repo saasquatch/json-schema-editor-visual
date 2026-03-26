@@ -341,7 +341,7 @@ class SchemaItem extends PureComponent {
       this.getPrefix(),
       editorName,
       data.properties[name][editorName],
-      type
+      type,
     );
   };
 
@@ -509,7 +509,11 @@ class SchemaItem extends PureComponent {
               <Icon type="close" className="close" />
             </span>
             {value.type === "object" ? (
-              <DropPlus prefix={prefix} name={name} />
+              <DropPlus
+                prefix={prefix}
+                name={name}
+                popupContainer={this.props.popupContainer}
+              />
             ) : (
               <span onClick={this.handleAddField}>
                 <Tooltip
@@ -575,7 +579,7 @@ const SchemaObject = connect((state) => ({
 }))(SchemaObjectComponent);
 
 const DropPlus = (props, context) => {
-  const { prefix, name, add } = props;
+  const { prefix, name, popupContainer } = props;
   const Model = context.Model.schema;
   const menu = (
     <Menu>
@@ -607,10 +611,15 @@ const DropPlus = (props, context) => {
       placement="top"
       title={LocaleProvider("add_node")}
       getPopupContainer={(triggerNode) =>
-        this.props.popupContainer || triggerNode.parentElement
+        popupContainer || triggerNode.parentElement
       }
     >
-      <Dropdown overlay={menu}>
+      <Dropdown
+        overlay={menu}
+        getPopupContainer={(triggerNode) =>
+          popupContainer || triggerNode.parentElement
+        }
+      >
         <Icon type="plus" className="plus" />
       </Dropdown>
     </Tooltip>
